@@ -72,6 +72,9 @@ func (s *QuestionStep) play(k *Game) bool {
 	fmt.Print(">> ")
 	fmt.Fscanf(os.Stdin, "%v", &n)
 	if n == k.Number {
+		fmt.Println("")
+		fmt.Println(">> you win !!!")
+		fmt.Println("")
 		k.GameFinished = true
 	} else {
 		if n > k.Number {
