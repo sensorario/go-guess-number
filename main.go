@@ -6,11 +6,6 @@ import "os"
 import "time"
 import "github.com/fatih/color"
 
-type GameStep interface {
-	play(g *Game) bool
-	name() string
-}
-
 type StartGameStep struct{}
 
 func (s *StartGameStep) play(k *Game) bool {
