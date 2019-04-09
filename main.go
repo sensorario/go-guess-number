@@ -6,48 +6,6 @@ import "os"
 import "time"
 import "github.com/fatih/color"
 
-type StartGameStep struct{}
-
-func (s *StartGameStep) play(k *Game) bool {
-	k.nextStep = &StartTurnStep{}
-	fmt.Println("")
-	return true
-}
-
-func (s *StartGameStep) name() string {
-	return "game started"
-}
-
-type StartTurnStep struct{}
-
-func (s *StartTurnStep) play(k *Game) bool {
-	if k.GameFinished == true {
-		return false
-	}
-
-	k.nextStep = &QuestionStep{}
-	return true
-}
-
-func (s *StartTurnStep) name() string {
-	return "turn started"
-}
-
-type EndTurnStep struct{}
-
-func (s *EndTurnStep) play(k *Game) bool {
-	if k.GameFinished == true {
-		return false
-	}
-
-	k.nextStep = &StartTurnStep{}
-	return true
-}
-
-func (s *EndTurnStep) name() string {
-	return "turn ended"
-}
-
 type Game struct {
 	nextStep     GameStep
 	Number       int
