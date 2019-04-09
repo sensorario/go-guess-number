@@ -4,6 +4,7 @@ import "math/rand"
 import "fmt"
 import "os"
 import "time"
+import "github.com/fatih/color"
 
 type GameStep interface {
 	play(g *Game) bool
@@ -59,7 +60,7 @@ type Game struct {
 }
 
 func (a *Game) logStep() {
-	fmt.Println(">>", a.nextStep.name())
+	fmt.Println(color.GreenString(a.nextStep.name()))
 	if a.nextStep.name() == "turn ended" {
 		fmt.Println("")
 	}
